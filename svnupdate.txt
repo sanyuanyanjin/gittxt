@@ -1,0 +1,2 @@
+cd C:\Program Files\TortoiseSVN\bin
+start TortoiseProc.exe /command:commit /path:"F:\jinyan\10.6.0.106" /closeonend:3
