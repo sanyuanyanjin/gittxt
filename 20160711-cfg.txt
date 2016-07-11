@@ -1,0 +1,800 @@
+set clock timezone 7
+set clock dst recurring start-weekday 2 0 3 02:00 end-weekday 1 0 11 02:00
+set vrouter trust-vr sharable
+set vrouter "untrust-vr"
+exit
+set vrouter "trust-vr"
+unset auto-route-export
+exit
+set service "FIN" protocol tcp src-port 0-65535 dst-port 81-81 
+set service "LINK" protocol tcp src-port 0-65535 dst-port 3389-3389 
+set service "8899" protocol tcp src-port 0-65535 dst-port 8899-8899 
+set service "finance" protocol tcp src-port 0-65535 dst-port 768-768 
+set service "FREEPP" protocol tcp src-port 0-65535 dst-port 4569-4569 
+set service "FREEPP" + udp src-port 0-65535 dst-port 4569-4569 
+set service "Softphone" protocol udp src-port 0-65535 dst-port 35902-35912 
+set service "Softphone" + udp src-port 0-65535 dst-port 35920-35930 
+set service "Softphone" + udp src-port 0-65535 dst-port 5060-5060 
+set service "Softphone" + udp src-port 0-65535 dst-port 5042-5042 
+set service "Softphone" + udp src-port 0-65535 dst-port 46888-46888 
+set service "TzuchiSIP" protocol tcp src-port 0-65535 dst-port 5060-5160 
+set service "TzuchiSIP" + udp src-port 0-65535 dst-port 5060-5160 
+set service "IPTV" protocol tcp src-port 0-65535 dst-port 13-13 
+set service "IPTV" + tcp src-port 0-65535 dst-port 3900-3930 
+set service "IPTV" + tcp src-port 0-65535 dst-port 8000-8443 
+set service "IPTV" + udp src-port 0-65535 dst-port 13-13 
+set service "IPTV" + udp src-port 0-65535 dst-port 3900-3930 
+set service "IPTV" + udp src-port 0-65535 dst-port 8000-8443 
+set service "IPTV" + tcp src-port 0-65535 dst-port 8080-8080 
+set service "Vmeet" protocol tcp src-port 0-65535 dst-port 443-443 
+set service "Vmeet" + tcp src-port 0-65535 dst-port 563-563 
+set service "Vmeet" + tcp src-port 0-65535 dst-port 1720-1720 
+set service "Vmeet" + tcp src-port 0-65535 dst-port 4320-4324 
+set service "Vmeet" + udp src-port 0-65535 dst-port 4320-4324 
+set service "Vmeet" + udp src-port 0-65535 dst-port 10240-20480 
+set service "Vmeet" + tcp src-port 0-65535 dst-port 7788-7788 
+set service "Lotus Notes" protocol tcp src-port 0-65535 dst-port 1352-1352 
+set service "Lotus Notes" + udp src-port 0-65535 dst-port 1352-1352 
+set service "Junkmail" protocol tcp src-port 0-65535 dst-port 901-901 
+set service "Junkmail" + udp src-port 0-65535 dst-port 901-901 
+set service "8080" protocol tcp src-port 0-65535 dst-port 8080-8080 
+set service "8080" + udp src-port 0-65535 dst-port 8080-8080 
+set service "8081" protocol tcp src-port 0-65535 dst-port 8081-8081 
+set service "8081" + udp src-port 0-65535 dst-port 8081-8081 
+set service "8088" protocol tcp src-port 0-65535 dst-port 8088-8088 
+set service "8088" + udp src-port 0-65535 dst-port 8088-8088 
+set service "10000" protocol tcp src-port 0-65535 dst-port 10000-10000 
+set service "10000" + udp src-port 0-65535 dst-port 10000-10000 
+set service "10022" protocol tcp src-port 0-65535 dst-port 10022-10022 
+set service "10022" + udp src-port 0-65535 dst-port 10022-10022 
+set service "10080" protocol tcp src-port 0-65535 dst-port 10080-10080 
+set service "10080" + udp src-port 0-65535 dst-port 10080-10080 
+set service "20080" protocol tcp src-port 0-65535 dst-port 20080-20080 
+set service "20080" + udp src-port 0-65535 dst-port 20080-20080 
+set service "sqlserver" protocol tcp src-port 0-65535 dst-port 1433-1433 
+set service "8060" protocol tcp src-port 0-65535 dst-port 8060-8060 
+set service "8060" + udp src-port 0-65535 dst-port 8060-8060 
+set service "8022" protocol tcp src-port 0-65535 dst-port 8022-8022 
+set service "8022" + udp src-port 0-65535 dst-port 8022-8022 
+set service "8021" protocol tcp src-port 0-65535 dst-port 8021-8021 
+set service "8021" + udp src-port 0-65535 dst-port 8021-8021 
+set alg appleichat enable
+unset alg appleichat re-assembly enable
+set alg sctp enable
+set auth-server "Local" id 0
+set auth-server "Local" server-name "Local"
+set auth default auth server "Local"
+set auth radius accounting port 1646
+set admin name "netscreen"
+set admin password "nJatCkr/IpFDczQNpsINRpEtjcHe6n"
+set admin user "michael" password "nBXiDlrtBtyKcowEBstJpVLtILEtnn" privilege "all"
+set admin user "wuhung" password "nF3SNmrHBDdBcAMBys2DUNJtCcKGnn" privilege "all"
+set admin user "sztzuchi" password "nGdWLmrHF6fAcgzBtseN/IKtiUFxLn" privilege "all"
+set admin user "yanjin" password "nNrjOTriGiYHcGjAQs5LisJtHjL1gn" privilege "all"
+set admin auth web timeout 10
+set admin auth server "Local"
+set admin auth remote primary
+set admin auth remote root
+set admin privilege read-write
+set admin format dos
+set zone "Trust" vrouter "trust-vr"
+set zone "Untrust" vrouter "trust-vr"
+set zone "DMZ" vrouter "trust-vr"
+set zone "VLAN" vrouter "trust-vr"
+set zone id 100 "vpn"
+set zone id 101 "lan1"
+set zone id 102 "Untrust 2"
+set zone id 103 "Untrast 3"
+set zone id 104 "Untrast 4"
+set zone "Untrust-Tun" vrouter "trust-vr"
+set zone "Trust" tcp-rst 
+set zone "Untrust" block 
+unset zone "Untrust" tcp-rst 
+set zone "MGT" block 
+set zone "DMZ" tcp-rst 
+set zone "VLAN" block 
+unset zone "VLAN" tcp-rst 
+unset zone "vpn" tcp-rst 
+unset zone "lan1" tcp-rst 
+set zone "Untrust 2" block 
+unset zone "Untrust 2" tcp-rst 
+set zone "Untrast 3" block 
+unset zone "Untrast 3" tcp-rst 
+set zone "Untrast 4" block 
+unset zone "Untrast 4" tcp-rst 
+set zone "Untrust" screen tear-drop
+set zone "Untrust" screen syn-flood
+set zone "Untrust" screen ping-death
+set zone "Untrust" screen ip-filter-src
+set zone "Untrust" screen land
+set zone "V1-Untrust" screen tear-drop
+set zone "V1-Untrust" screen syn-flood
+set zone "V1-Untrust" screen ping-death
+set zone "V1-Untrust" screen ip-filter-src
+set zone "V1-Untrust" screen land
+set interface "ethernet0/0" zone "Untrust 2"
+set interface "ethernet0/1" zone "DMZ"
+set interface "ethernet0/2" zone "Untrust"
+set interface "ethernet0/3" zone "vpn"
+set interface "ethernet0/4" zone "Untrast 3"
+set interface "ethernet0/5" zone "Untrast 4"
+set interface "bgroup0/0" zone "Trust"
+set interface ethernet0/0 ip 222.92.37.82/29
+set interface ethernet0/0 nat
+unset interface vlan1 ip
+set interface ethernet0/1 ip 10.6.0.1/24
+set interface ethernet0/1 nat
+set interface ethernet0/2 ip 221.224.215.202/29
+set interface ethernet0/2 route
+set interface ethernet0/3 ip 172.18.146.6/30
+set interface ethernet0/3 route
+set interface ethernet0/4 ip 112.25.133.182/30
+set interface ethernet0/4 route
+set interface ethernet0/5 ip 192.168.102.3/24
+set interface ethernet0/5 route
+set interface bgroup0/0 ip 192.168.0.1/24
+set interface bgroup0/0 nat
+unset interface vlan1 bypass-others-ipsec
+unset interface vlan1 bypass-non-ip
+set interface ethernet0/0 ip manageable
+set interface ethernet0/1 ip manageable
+set interface ethernet0/2 ip manageable
+set interface ethernet0/3 ip manageable
+unset interface ethernet0/4 ip manageable
+unset interface ethernet0/5 ip manageable
+set interface bgroup0/0 ip manageable
+set interface ethernet0/0 manage snmp
+set interface ethernet0/0 manage web
+set interface ethernet0/1 manage ssh
+set interface ethernet0/1 manage telnet
+set interface ethernet0/1 manage snmp
+set interface ethernet0/1 manage ssl
+set interface ethernet0/1 manage web
+set interface ethernet0/2 manage snmp
+set interface ethernet0/2 manage web
+set interface ethernet0/3 manage ping
+set interface ethernet0/3 manage ssh
+set interface ethernet0/3 manage telnet
+set interface ethernet0/3 manage snmp
+set interface ethernet0/3 manage ssl
+set interface ethernet0/3 manage web
+set interface ethernet0/4 manage snmp
+set interface ethernet0/4 manage web
+set interface ethernet0/0 monitor track-ip ip
+unset interface ethernet0/0 monitor track-ip dynamic
+set interface ethernet0/2 vip interface-ip
+set interface ethernet0/2 vip 221.224.215.206 80 "HTTP" 10.6.0.10 manual
+set interface ethernet0/2 vip 221.224.215.206 + 443 "HTTPS" 10.6.0.10 manual
+set interface ethernet0/2 vip 221.224.215.206 + 25 "SMTP" 10.6.0.10 manual
+set interface bgroup0/0 vip interface-ip
+set interface ethernet0/2 vip 221.224.215.205 21 "FTP" 10.6.0.74
+set interface ethernet0/2 vip 221.224.215.205 + 80 "HTTP" 10.6.100.33 manual
+set interface ethernet0/2 vip 221.224.215.205 + 8080 "8080" 10.6.2.222
+set interface ethernet0/2 vip 221.224.215.205 + 8081 "8081" 10.6.100.33 manual
+set interface ethernet0/2 vip 221.224.215.205 + 8088 "8088" 10.6.100.33 manual
+set interface ethernet0/2 vip 221.224.215.205 + 25 "SMTP" 10.6.100.33 manual
+set interface ethernet0/2 vip 221.224.215.205 + 10022 "SSH" 10.6.0.37 manual
+set interface ethernet0/2 vip 221.224.215.205 + 10080 "HTTP" 10.6.0.37 manual
+set interface ethernet0/2 vip 221.224.215.205 + 10000 "10000" 10.6.0.37 manual
+set interface ethernet0/2 vip 221.224.215.205 + 20080 "HTTP" 10.6.0.39 manual
+set interface ethernet0/2 vip 221.224.215.205 + 443 "HTTPS" 10.6.100.33 manual
+set interface ethernet0/2 vip 221.224.215.205 + 1433 "sqlserver" 10.6.100.33 manual
+set interface ethernet0/2 vip 221.224.215.205 + 8022 "SSH" 10.6.4.60
+set interface ethernet0/2 vip 221.224.215.205 + 8060 "HTTP" 10.6.4.60
+set interface bgroup0/0 dhcp server service
+set interface bgroup0/0 dhcp server enable
+set interface bgroup0/0 dhcp server option lease 120 
+set interface bgroup0/0 dhcp server option gateway 192.168.0.1 
+set interface bgroup0/0 dhcp server option dns1 61.177.7.1 
+set interface bgroup0/0 dhcp server option dns2 221.228.255.1 
+set interface bgroup0/0 dhcp server ip 192.168.0.31 to 192.168.0.191 
+unset interface bgroup0/0 dhcp server config next-server-ip
+set interface "ethernet0/2" mip 221.224.215.203 host 10.6.0.72 netmask 255.255.255.255 vr "trust-vr"
+unset flow no-tcp-seq-check
+set flow tcp-syn-check
+unset flow tcp-syn-bit-check
+set flow reverse-route clear-text prefer
+set flow reverse-route tunnel always
+set pki authority default scep mode "auto"
+set pki x509 default cert-path partial
+set dns host dns1 61.177.7.1
+set dns host dns2 221.228.255.1
+set dns host dns3 0.0.0.0
+set dns host schedule 06:28
+set address "Trust" "192.168.0.0/24" 192.168.0.0 255.255.255.0
+set address "Trust" "192.168.0.209/32" 192.168.0.209 255.255.255.255
+set address "Trust" "finance" 192.168.0.103 255.255.255.255 "finance system"
+set address "Untrust" "10.6.3.0/24" 10.6.3.0 255.255.255.0
+set address "Untrust" "124.219.23.220/32" 124.219.23.220 255.255.255.255
+set address "Untrust" "124.219.23.225/32" 124.219.23.225 255.255.255.255
+set address "Untrust" "124.219.23.226/32" 124.219.23.226 255.255.255.255
+set address "Untrust" "124.219.4.0/24" 124.219.4.0 255.255.255.0
+set address "Untrust" "124.219.4.201/32" 124.219.4.201 255.255.255.255
+set address "Untrust" "124.219.4.211/32" 124.219.4.211 255.255.255.255
+set address "Untrust" "124.219.4.212/32" 124.219.4.212 255.255.255.255
+set address "Untrust" "124.219.4.214/32" 124.219.4.214 255.255.255.255
+set address "Untrust" "203.160.245.0/14" 203.160.245.0 255.252.0.0
+set address "Untrust" "203.160.245.0/24" 203.160.245.0 255.255.255.0
+set address "Untrust" "203.66.149.106/32" 203.66.149.106 255.255.255.255
+set address "Untrust" "203.66.149.36/32" 203.66.149.36 255.255.255.255
+set address "Untrust" "210.201.79.0/24" 210.201.79.0 255.255.255.0
+set address "Untrust" "210.71.242.200/32" 210.71.242.200 255.255.255.255
+set address "Untrust" "220.130.144.230/32" 220.130.144.230 255.255.255.255
+set address "Untrust" "221.224.134.226/32" 221.224.134.226 255.255.255.255
+set address "Untrust" "221.224.215.202/29" 221.224.215.202 255.255.255.248
+set address "Untrust" "221.224.215.202/32" 221.224.215.202 255.255.255.255
+set address "Untrust" "221.224.215.203/32" 221.224.215.203 255.255.255.255
+set address "Untrust" "221.224.215.204/32" 221.224.215.204 255.255.255.255
+set address "Untrust" "221.224.215.205/32" 221.224.215.205 255.255.255.255
+set address "Untrust" "221.224.215.206/32" 221.224.215.206 255.255.255.255
+set address "Untrust" "222.92.148.203/32" 222.92.148.203 255.255.255.255
+set address "Untrust" "61.177.7.1/32" 61.177.7.1 255.255.255.255
+set address "Untrust" "61.219.79.58/32" 61.219.79.58 255.255.255.255
+set address "Untrust" "93.189.44.187/32" 93.189.44.187 255.255.255.255
+set address "Untrust" "ebook.tzuchi.net" 203.145.200.40 255.255.255.255
+set address "Untrust" "gktibioivpqbot.net" gktibioivpqbot.net 
+set address "Untrust" "jmyeansxbbiibw.org" jmyeansxbbiibw.org 
+set address "Untrust" "kktvnsdykphojs.co.uk" kktvnsdykphojs.co.uk 
+set address "Untrust" "ldap.tzuchi.org" 203.66.149.112 255.255.255.255
+set address "Untrust" "lnjaadfliwshke.info" lnjaadfliwshke.info 
+set address "Untrust" "mlernipmrlrnjj.com" mlernipmrlrnjj.com 
+set address "Untrust" "ppfuovpjxejnoy.biz" ppfuovpjxejnoy.biz 
+set address "Untrust" "qnamcbakhsitnw.ru" qnamcbakhsitnw.ru 
+set address "Untrust" "tw.tzuchi.org" 124.219.27.20 255.255.255.255
+set address "Untrust" "tzuchi.com.cn" tzuchi.com.cn 
+set address "Untrust" "tzuchi.org.cn" tzuchi.org.cn 
+set address "DMZ" "10.6.0.0/16" 10.6.0.0 255.255.0.0
+set address "DMZ" "10.6.0.0/24" 10.6.0.0 255.255.255.0
+set address "DMZ" "10.6.0.10/255.255.255.252" 10.6.0.10 255.255.255.252
+set address "DMZ" "10.6.0.10/32" 10.6.0.10 255.255.255.255
+set address "DMZ" "10.6.0.100/32" 10.6.0.100 255.255.255.255
+set address "DMZ" "10.6.0.12/32" 10.6.0.12 255.255.255.255
+set address "DMZ" "10.6.0.14/32" 10.6.0.14 255.255.255.255
+set address "DMZ" "10.6.0.6/32" 10.6.0.6 255.255.255.255
+set address "DMZ" "10.6.0.66/32" 10.6.0.66 255.255.255.255
+set address "DMZ" "10.6.0.67/32" 10.6.0.67 255.255.255.255
+set address "DMZ" "10.6.0.71/32" 10.6.0.71 255.255.255.255
+set address "DMZ" "10.6.0.73/32" 10.6.0.73 255.255.255.255
+set address "DMZ" "10.6.0.74/32" 10.6.0.74 255.255.255.255
+set address "DMZ" "10.6.0.99/32" 10.6.0.99 255.255.255.255
+set address "DMZ" "10.6.1.0/24" 10.6.1.0 255.255.255.0
+set address "DMZ" "10.6.1.23/32" 10.6.1.23 255.255.255.255
+set address "DMZ" "10.6.1.26/32" 10.6.1.26 255.255.255.255
+set address "DMZ" "10.6.1.44/32" 10.6.1.44 255.255.255.255
+set address "DMZ" "10.6.1.63/32" 10.6.1.63 255.255.255.255
+set address "DMZ" "10.6.1.64/26" 10.6.1.64 255.255.255.192
+set address "DMZ" "10.6.1.69/32" 10.6.1.69 255.255.255.255
+set address "DMZ" "10.6.100.0/24" 10.6.100.0 255.255.255.0
+set address "DMZ" "10.6.100.192/27" 10.6.100.192 255.255.255.224
+set address "DMZ" "10.6.100.31/32" 10.6.100.31 255.255.255.255
+set address "DMZ" "10.6.100.32/25" 10.6.100.32 255.255.255.128
+set address "DMZ" "10.6.100.32/32" 10.6.100.32 255.255.255.255
+set address "DMZ" "10.6.100.33/32" 10.6.100.33 255.255.255.255
+set address "DMZ" "10.6.100.34/32" 10.6.100.34 255.255.255.255
+set address "DMZ" "10.6.100.35/32" 10.6.100.35 255.255.255.255
+set address "DMZ" "10.6.100.36/32" 10.6.100.36 255.255.255.255
+set address "DMZ" "10.6.100.37/32" 10.6.100.37 255.255.255.255
+set address "DMZ" "10.6.100.39/32" 10.6.100.39 255.255.255.255
+set address "DMZ" "10.6.100.40/32" 10.6.100.40 255.255.255.255
+set address "DMZ" "10.6.100.42/32" 10.6.100.42 255.255.255.255
+set address "DMZ" "10.6.101.0/24" 10.6.101.0 255.255.255.0
+set address "DMZ" "10.6.101.10/27" 10.6.101.10 255.255.255.224
+set address "DMZ" "10.6.101.198/32" 10.6.101.198 255.255.255.255
+set address "DMZ" "10.6.101.199/32" 10.6.101.199 255.255.255.255
+set address "DMZ" "10.6.101.65/32" 10.6.101.65 255.255.255.255
+set address "DMZ" "10.6.101.72/32" 10.6.101.72 255.255.255.255
+set address "DMZ" "10.6.101.75/32" 10.6.101.75 255.255.255.255
+set address "DMZ" "10.6.101.76/32" 10.6.101.76 255.255.255.255
+set address "DMZ" "10.6.101.99/32" 10.6.101.99 255.255.255.255
+set address "DMZ" "10.6.2.0/24" 10.6.2.0 255.255.255.0
+set address "DMZ" "10.6.2.128/26" 10.6.2.128 255.255.255.192
+set address "DMZ" "10.6.2.210/32" 10.6.2.210 255.255.255.255
+set address "DMZ" "10.6.2.214/32" 10.6.2.214 255.255.255.255
+set address "DMZ" "10.6.2.64/26" 10.6.2.64 255.255.255.192
+set address "DMZ" "10.6.3.0/24" 10.6.3.0 255.255.255.0
+set address "DMZ" "10.6.3.32/27" 10.6.3.32 255.255.255.224
+set address "DMZ" "10.6.3.85/32" 10.6.3.85 255.255.255.255 "jingsi-ebook"
+set address "DMZ" "10.6.4.0/24" 10.6.4.0 255.255.255.0
+set address "DMZ" "10.6.6.0/24" 10.6.6.0 255.255.255.0
+set address "DMZ" "116.58.219.199/32" 116.58.219.199 255.255.255.255
+set address "DMZ" "192.168.10.0/24" 192.168.10.0 255.255.255.0
+set address "DMZ" "192.168.11.0/24" 192.168.11.0 255.255.255.0
+set address "DMZ" "192.168.11.192/32" 192.168.11.192 255.255.255.255
+set address "DMZ" "192.168.110.0/24" 192.168.110.0 255.255.255.0
+set address "DMZ" "192.168.111.0/24" 192.168.111.0 255.255.255.0
+set address "DMZ" "192.168.112.0/24" 192.168.112.0 255.255.255.0
+set address "DMZ" "192.168.12.0/24" 192.168.12.0 255.255.255.0
+set address "DMZ" "192.168.121.0/24" 192.168.121.0 255.255.255.0
+set address "DMZ" "192.168.122.0/24" 192.168.122.0 255.255.255.0
+set address "DMZ" "192.168.123.0/24" 192.168.123.0 255.255.255.0
+set address "DMZ" "192.168.124.0/24" 192.168.124.0 255.255.255.0
+set address "DMZ" "222.92.37.85/32" 222.92.37.85 255.255.255.255
+set address "DMZ" "addr_web" 10.6.0.10 255.255.255.255
+set address "DMZ" "ipmap_web" 221.224.215.206 255.255.255.255
+set address "DMZ" "mail server" 10.6.0.66 255.255.255.255
+set address "vpn" "10.0.0.0/16" 10.0.0.0 255.255.0.0
+set address "vpn" "10.0.0.0/8" 10.0.0.0 255.0.0.0
+set address "vpn" "10.1.0.0/16" 10.1.0.0 255.255.0.0
+set address "vpn" "10.2.0.0/16" 10.2.0.0 255.255.0.0
+set address "vpn" "124.219.23.225/32" 124.219.23.225 255.255.255.255
+set address "vpn" "124.219.23.226/32" 124.219.23.226 255.255.255.255
+set address "vpn" "124.219.4.0/24" 124.219.4.0 255.255.255.0
+set address "vpn" "124.219.4.212/32" 124.219.4.212 255.255.255.255
+set address "vpn" "124.219.4.214/32" 124.219.4.214 255.255.255.255
+set address "vpn" "203.66.149.36/32" 203.66.149.36 255.255.255.255
+set address "vpn" "221.224.215.202/32" 221.224.215.202 255.255.255.255
+set address "vpn" "221.224.215.205/32" 221.224.215.205 255.255.255.255
+set address "vpn" "61.219.79.58/32" 61.219.79.58 255.255.255.255
+set address "lan1" "10.6.1.0/24" 10.6.1.0 255.255.255.0
+set address "lan1" "10.6.1.139/32" 10.6.1.139 255.255.255.255
+set address "lan1" "10.6.2.0/24" 10.6.2.0 255.255.255.0
+set address "Untrust 2" "*.update.microsoft.com" *.update.microsoft.com 
+set address "Untrust 2" "116.58.219.199/32" 116.58.219.199 255.255.255.255
+set address "Untrust 2" "123.124.191.145/32" 123.124.191.145 255.255.255.255
+set address "Untrust 2" "124.219.23.209/32" 124.219.23.209 255.255.255.255
+set address "Untrust 2" "180.168.84.137/32" 180.168.84.137 255.255.255.255
+set address "Untrust 2" "202.102.85.180/32" 202.102.85.180 255.255.255.255
+set address "Untrust 2" "210.71.242.0/24" 210.71.242.0 255.255.255.0
+set address "Untrust 2" "211.152.110.101/32" 211.152.110.101 255.255.255.255
+set address "Untrust 2" "218.92.221.210/32" 218.92.221.210 255.255.255.255
+set address "Untrust 2" "218.94.92.220/32" 218.94.92.220 255.255.255.255
+set address "Untrust 2" "219.239.91.76/32" 219.239.91.76 255.255.255.255
+set address "Untrust 2" "221.224.134.226/32" 221.224.134.226 255.255.255.255
+set address "Untrust 2" "221.224.215.202/29" 221.224.215.202 255.255.255.248
+set address "Untrust 2" "221.224.215.204/32" 221.224.215.204 255.255.255.255
+set address "Untrust 2" "221.224.215.205/32" 221.224.215.205 255.255.255.255
+set address "Untrust 2" "221.224.215.206/32" 221.224.215.206 255.255.255.255
+set address "Untrust 2" "221.226.40.0/24" 221.226.40.0 255.255.255.0
+set address "Untrust 2" "221.226.40.111/32" 221.226.40.111 255.255.255.255
+set address "Untrust 2" "221.228.204.31/32" 221.228.204.31 255.255.255.255
+set address "Untrust 2" "61.177.7.1/32" 61.177.7.1 255.255.255.255
+set address "Untrust 2" "69.164.223.213/32" 69.164.223.213 255.255.255.255
+set address "Untrust 2" "93.189.44.187/32" 93.189.44.187 255.255.255.255
+set address "Untrust 2" "ca.js-l-tax.gov.cn" ca.js-l-tax.gov.cn 
+set address "Untrust 2" "cp1.cib.com.cn" cp1.cib.com.cn 
+set address "Untrust 2" "cp2.cib.com.cn" cp2.cib.com.cn 
+set address "Untrust 2" "cp3.cib.com.cn" cp3.cib.com.cn 
+set address "Untrust 2" "download.windowsupdate.com" download.windowsupdate.com 
+set address "Untrust 2" "gktibioivpqbot.net" gktibioivpqbot.net 
+set address "Untrust 2" "jmyeansxbbiibw.org" jmyeansxbbiibw.org 
+set address "Untrust 2" "kktvnsdykphojs.co.uk" kktvnsdykphojs.co.uk 
+set address "Untrust 2" "ldap.tzuchi.org" 203.66.149.112 255.255.255.255
+set address "Untrust 2" "lnjaadfliwshke.info" lnjaadfliwshke.info 
+set address "Untrust 2" "microsoft update" 157.56.77.157 255.255.255.255
+set address "Untrust 2" "mlernipmrlrnjj.com" mlernipmrlrnjj.com 
+set address "Untrust 2" "ppfuovpjxejnoy.biz" ppfuovpjxejnoy.biz 
+set address "Untrust 2" "qnamcbakhsitnw.ru" qnamcbakhsitnw.ru 
+set address "Untrust 2" "ttzmla" 210.71.242.200 255.255.255.255
+set address "Untrust 2" "tw.tzuchi.org" 124.219.27.20 255.255.255.255
+set address "Untrust 2" "tzuchi.com.cn" 221.224.215.205 255.255.255.255
+set address "Untrust 2" "tzuchi.org.cn" 221.224.215.206 255.255.255.255
+set address "Untrust 2" "wsbs.js-l-tax.gov.cn" wsbs.js-l-tax.gov.cn 
+set address "Untrust 2" "www.cib.com.cn" www.cib.com.cn 
+set address "Untrust 2" "www.jsds.gov.cn" www.jsds.gov.cn 
+set group address "DMZ" "Guest"
+set group address "DMZ" "Guest" add "192.168.11.0/24"
+set ike respond-bad-spi 1
+set ike ikev2 ike-sa-soft-lifetime 60
+unset ike ikeid-enumeration
+unset ike dos-protection
+unset ipsec access-session enable
+set ipsec access-session maximum 5000
+set ipsec access-session upper-threshold 0
+set ipsec access-session lower-threshold 0
+set ipsec access-session dead-p2-sa-timeout 0
+unset ipsec access-session log-error
+unset ipsec access-session info-exch-connected
+unset ipsec access-session use-error-log
+set vrouter "untrust-vr"
+exit
+set vrouter "trust-vr"
+exit
+set url protocol websense
+exit
+set policy id 102 name "block" from "DMZ" to "Untrust"  "Any" "93.189.44.187/32" "ANY" nat src deny 
+set policy id 102
+set dst-address "gktibioivpqbot.net"
+set dst-address "jmyeansxbbiibw.org"
+set dst-address "kktvnsdykphojs.co.uk"
+set dst-address "lnjaadfliwshke.info"
+set dst-address "mlernipmrlrnjj.com"
+set dst-address "ppfuovpjxejnoy.biz"
+set dst-address "qnamcbakhsitnw.ru"
+exit
+set policy id 105 name "Jingsi-eBook" from "DMZ" to "Untrust"  "Any" "ebook.tzuchi.net" "ANY" nat src permit log 
+set policy id 105 disable
+set policy id 105
+set dst-address "ldap.tzuchi.org"
+set dst-address "tw.tzuchi.org"
+exit
+set policy id 97 from "DMZ" to "Untrust"  "10.6.100.33/32" "Any" "SMTP" nat src permit 
+set policy id 97
+exit
+set policy id 50 name "Softphone" from "DMZ" to "Untrust"  "10.6.100.0/24" "124.219.23.220/32" "ANY" nat src permit 
+set policy id 50
+set src-address "10.6.101.0/24"
+set src-address "10.6.3.0/24"
+set dst-address "203.66.149.106/32"
+set dst-address "203.66.149.36/32"
+set dst-address "210.71.242.200/32"
+set dst-address "221.224.215.202/29"
+set dst-address "221.224.215.204/32"
+set dst-address "61.177.7.1/32"
+set dst-address "ebook.tzuchi.net"
+set dst-address "ldap.tzuchi.org"
+set dst-address "tw.tzuchi.org"
+set dst-address "tzuchi.com.cn"
+set dst-address "tzuchi.org.cn"
+exit
+set policy id 47 from "DMZ" to "Untrust"  "10.6.1.64/26" "Any" "HTTP" deny 
+set policy id 47
+set src-address "10.6.2.128/26"
+set src-address "10.6.2.64/26"
+exit
+set policy id 52 from "DMZ" to "Untrust"  "10.6.100.0/24" "Any" "ANY" nat src deny 
+set policy id 52
+set src-address "10.6.101.0/24"
+set src-address "192.168.10.0/24"
+exit
+set policy id 46 from "DMZ" to "Untrust"  "10.6.0.0/24" "Any" "ANY" nat src permit 
+set policy id 46
+set src-address "10.6.1.0/24"
+set src-address "10.6.2.0/24"
+set src-address "10.6.3.0/24"
+set src-address "10.6.4.0/24"
+set src-address "10.6.6.0/24"
+set src-address "192.168.11.0/24"
+set src-address "192.168.12.0/24"
+exit
+set policy id 2 name "3" from "vpn" to "Trust"  "Any" "Any" "ANY" nat src permit 
+set policy id 2
+exit
+set policy id 25 from "Trust" to "vpn"  "192.168.0.0/24" "124.219.4.0/24" "ANY" permit 
+set policy id 25 disable
+set policy id 25
+exit
+set policy id 3 name "2" from "Trust" to "vpn"  "Any" "Any" "ANY" permit 
+set policy id 3
+exit
+set policy id 4 name "4" from "Trust" to "DMZ"  "Any" "Any" "ANY" permit 
+set policy id 4
+exit
+set policy id 5 name "1" from "Trust" to "Untrust"  "Any" "Any" "ANY" permit 
+set policy id 5
+exit
+set policy id 108 from "Untrust" to "DMZ"  "221.224.215.204/32" "Any" "ANY" permit 
+set policy id 108 disable
+set policy id 108
+exit
+set policy id 74 from "Untrust" to "DMZ"  "124.219.4.211/32" "Any" "ANY" permit 
+set policy id 74
+set src-address "124.219.4.212/32"
+exit
+set policy id 45 from "Untrust" to "DMZ"  "Any" "Any" "FREEPP" permit 
+set policy id 45
+set service "SIP"
+exit
+set policy id 84 from "Untrust" to "DMZ"  "61.219.79.58/32" "10.6.2.210/32" "ANY" permit 
+set policy id 84
+exit
+set policy id 8 from "Untrust" to "DMZ"  "Any" "VIP(221.224.215.206)" "HTTP" permit 
+set policy id 8
+set service "HTTPS"
+exit
+set policy id 36 from "Untrust" to "DMZ"  "Any" "VIP(221.224.215.205)" "10000" permit 
+set policy id 36
+set service "10022"
+set service "10080"
+set service "20080"
+set service "8021"
+set service "8022"
+set service "8060"
+set service "8080"
+set service "8081"
+set service "8088"
+set service "8899"
+set service "FTP"
+set service "HTTP"
+set service "HTTPS"
+set service "sqlserver"
+exit
+set policy id 18 from "Untrust" to "Trust"  "Any" "192.168.0.0/24" "ANY" permit 
+set policy id 18
+exit
+set policy id 9 from "Untrust" to "Trust"  "Any" "VIP(ethernet0/2)" "HTTP" permit 
+set policy id 9
+exit
+set policy id 10 from "Untrust" to "Trust"  "Any" "VIP(ethernet0/2)" "FIN" permit 
+set policy id 10
+exit
+set policy id 11 from "Untrust" to "Trust"  "Any" "VIP(ethernet0/2)" "LINK" permit 
+set policy id 11
+exit
+set policy id 12 from "Untrust" to "Trust"  "Any" "VIP(221.224.215.206)" "SIP" permit 
+set policy id 12 disable
+set policy id 12
+exit
+set policy id 40 from "DMZ" to "vpn"  "10.6.0.0/24" "124.219.4.214/32" "ANY" permit 
+set policy id 40
+exit
+set policy id 81 from "DMZ" to "vpn"  "10.6.2.210/32" "61.219.79.58/32" "ANY" permit 
+set policy id 81
+exit
+set policy id 14 from "DMZ" to "vpn"  "Any" "Any" "ANY" permit 
+set policy id 14
+exit
+set policy id 15 from "lan1" to "vpn"  "Any" "Any" "ANY" permit 
+set policy id 15
+exit
+set policy id 16 from "lan1" to "DMZ"  "Any" "Any" "ANY" permit 
+set policy id 16
+exit
+set policy id 19 from "vpn" to "lan1"  "Any" "Any" "ANY" permit 
+set policy id 19
+exit
+set policy id 20 from "lan1" to "Untrust"  "Any" "Any" "ANY" nat src permit 
+set policy id 20
+exit
+set policy id 26 from "Untrust" to "lan1"  "Any" "Any" "FREEPP" permit 
+set policy id 26
+set service "HTTP"
+set service "Softphone"
+set service "VOIP"
+exit
+set policy id 30 from "DMZ" to "Trust"  "Any" "Any" "ANY" permit 
+set policy id 30
+exit
+set policy id 31 from "DMZ" to "lan1"  "Any" "Any" "ANY" permit 
+set policy id 31
+exit
+set policy id 66 from "vpn" to "Untrust"  "10.0.0.0/16" "221.224.215.204/32" "ANY" permit 
+set policy id 66
+set src-address "10.1.0.0/16"
+set src-address "10.2.0.0/16"
+set src-address "124.219.4.214/32"
+exit
+set policy id 64 from "Untrust" to "vpn"  "221.224.215.204/32" "10.0.0.0/16" "ANY" permit 
+set policy id 64
+set dst-address "10.1.0.0/16"
+set dst-address "10.2.0.0/16"
+set dst-address "124.219.4.214/32"
+exit
+set policy id 34 from "Untrust" to "vpn"  "221.224.215.205/32" "203.66.149.36/32" "ANY" permit 
+set policy id 34
+exit
+set policy id 35 from "vpn" to "Untrust"  "203.66.149.36/32" "221.224.215.204/32" "ANY" permit 
+set policy id 35
+exit
+set policy id 82 from "vpn" to "DMZ"  "61.219.79.58/32" "10.6.2.210/32" "ANY" permit 
+set policy id 82
+exit
+set policy id 1 name "8" from "vpn" to "DMZ"  "Any" "Any" "ANY" permit 
+set policy id 1
+exit
+set policy id 44 from "DMZ" to "Untrust"  "Any" "124.219.23.220/32" "ANY" nat src permit 
+set policy id 44 disable
+set policy id 44
+exit
+set policy id 103 name "block" from "DMZ" to "Untrust 2"  "Any" "93.189.44.187/32" "ANY" nat src deny 
+set policy id 103
+set dst-address "gktibioivpqbot.net"
+set dst-address "jmyeansxbbiibw.org"
+set dst-address "kktvnsdykphojs.co.uk"
+set dst-address "lnjaadfliwshke.info"
+set dst-address "mlernipmrlrnjj.com"
+set dst-address "ppfuovpjxejnoy.biz"
+set dst-address "qnamcbakhsitnw.ru"
+exit
+set policy id 107 name "host42" from "DMZ" to "Untrust 2"  "10.6.100.42/32" "Any" "ANY" nat src permit 
+set policy id 107 disable
+set policy id 107
+exit
+set policy id 101 from "DMZ" to "Untrust 2"  "10.6.1.69/32" "219.239.91.76/32" "ANY" nat src permit 
+set policy id 101
+set src-address "10.6.100.33/32"
+set src-address "10.6.100.34/32"
+set src-address "10.6.100.35/32"
+set src-address "10.6.100.40/32"
+exit
+set policy id 96 from "DMZ" to "Untrust 2"  "10.6.100.33/32" "Any" "SMTP" nat src permit 
+set policy id 96
+exit
+set policy id 95 from "DMZ" to "Untrust 2"  "10.6.0.74/32" "Any" "FTP" nat src permit 
+set policy id 95
+exit
+set policy id 61 from "DMZ" to "Untrust 2"  "10.6.1.0/24" "124.219.23.209/32" "ANY" nat src permit 
+set policy id 61
+set src-address "10.6.1.23/32"
+set src-address "10.6.1.26/32"
+set src-address "10.6.100.0/24"
+set src-address "10.6.101.0/24"
+set src-address "10.6.2.0/24"
+set src-address "10.6.3.0/24"
+set src-address "10.6.4.0/24"
+set src-address "10.6.6.0/24"
+set src-address "192.168.11.0/24"
+set dst-address "221.224.215.202/29"
+set dst-address "61.177.7.1/32"
+set dst-address "cp1.cib.com.cn"
+set dst-address "cp2.cib.com.cn"
+set dst-address "cp3.cib.com.cn"
+set dst-address "ldap.tzuchi.org"
+set dst-address "ttzmla"
+set dst-address "tw.tzuchi.org"
+set dst-address "tzuchi.com.cn"
+set dst-address "tzuchi.org.cn"
+set dst-address "www.cib.com.cn"
+exit
+set policy id 75 from "DMZ" to "Untrust 2"  "Any" "210.71.242.0/24" "ANY" nat src permit 
+set policy id 75
+set dst-address "61.177.7.1/32"
+set dst-address "69.164.223.213/32"
+exit
+set policy id 106 name "jingsibook2" from "DMZ" to "Untrust 2"  "10.6.3.85/32" "211.152.110.101/32" "ANY" nat src permit 
+set policy id 106
+set dst-address "69.164.223.213/32"
+exit
+set policy id 56 from "DMZ" to "Untrust 2"  "10.6.1.64/26" "Any" "HTTP" deny 
+set policy id 56
+set src-address "10.6.2.128/26"
+set src-address "10.6.2.64/26"
+exit
+set policy id 58 from "DMZ" to "Untrust 2"  "10.6.1.23/32" "Any" "ANY" deny 
+set policy id 58
+set src-address "10.6.1.26/32"
+set src-address "10.6.1.63/32"
+set src-address "10.6.100.0/24"
+set src-address "10.6.101.0/24"
+set src-address "192.168.10.0/24"
+set src-address "192.168.11.192/32"
+exit
+set policy id 71 from "DMZ" to "Untrust 2"  "10.6.0.0/16" "Any" "ANY" nat src permit 
+set policy id 71
+set src-address "10.6.0.0/24"
+set src-address "10.6.1.0/24"
+set src-address "10.6.2.0/24"
+set src-address "10.6.3.0/24"
+set src-address "10.6.4.0/24"
+set src-address "10.6.6.0/24"
+set src-address "192.168.11.0/24"
+set src-address "192.168.12.0/24"
+exit
+set policy id 65 from "vpn" to "Untrust"  "10.0.0.0/8" "221.224.215.204/32" "ANY" permit 
+set policy id 65
+set src-address "124.219.4.214/32"
+exit
+set policy id 68 from "Untrust 2" to "DMZ"  "Any" "VIP(221.224.215.206)" "ANY" permit 
+set policy id 68
+exit
+set policy id 73 from "Untrust 2" to "DMZ"  "221.224.215.204/32" "Any" "ANY" permit 
+set policy id 73
+exit
+set policy id 76 from "lan1" to "Untrust 2"  "Any" "Any" "ANY" nat src permit 
+set policy id 76
+exit
+set policy id 90 from "Untrust" to "DMZ"  "Any" "10.6.0.0/24" "ANY" permit 
+set policy id 90
+exit
+set policy id 91 from "DMZ" to "Untrust 2"  "192.168.11.0/24" "Any" "ANY" nat src permit traffic mbw 4096
+set policy id 91
+set src-address "192.168.12.0/24"
+exit
+set policy id 92 from "Untrust" to "DMZ"  "222.92.148.203/32" "10.6.0.71/32" "SNMP" permit 
+set policy id 92
+exit
+set policy id 93 from "Untrust 2" to "DMZ"  "Any" "192.168.121.0/24" "ANY" permit 
+set policy id 93
+exit
+set policy id 94 from "Untrust 2" to "DMZ"  "Any" "Guest" "ANY" nat src permit count traffic mbw 4096
+set policy id 94
+exit
+set policy id 98 from "Untrust 2" to "DMZ"  "Any" "10.6.100.33/32" "SMTP" permit 
+set policy id 98
+exit
+set policy id 99 from "Untrust" to "DMZ"  "Any" "VIP(221.224.215.205)" "SMTP" permit 
+set policy id 99
+exit
+set policy id 109 from "Untrust" to "DMZ"  "Any" "MIP(221.224.215.203)" "ANY" permit 
+set policy id 109
+exit
+set policy id 110 name "allow" from "DMZ" to "Untrast 3"  "Any" "Any" "ANY" nat src permit 
+set policy id 110
+exit
+set policy id 111 name "changshang" from "DMZ" to "Untrast 4"  "Any" "Any" "ANY" nat src permit 
+set policy id 111
+exit
+set pppoe name "lab"
+set pppoe name "lab" username "051212509365" password "kND99BNXN4Tlvps9hzCEHTU853n3KPw3XQ=="
+unset pppoe name "lab" update-dhcpserver
+set pppoe name "lab" default-route-metric 65535
+set nsmgmt bulkcli reboot-timeout 60
+set ssh version v2
+set config lock timeout 5
+unset license-key auto-update
+set snmp community "public" Read-Write Trap-on traffic version v1  
+set snmp host "public" 0.0.0.0 0.0.0.0 
+set snmp host "public" 10.0.6.35 255.255.255.255 src-interface ethernet0/3 trap v1
+set snmp host "public" 10.6.0.71 255.255.255.255 src-interface ethernet0/1 trap v1
+set snmp location "public"
+set snmp contact "public"
+set snmp name "SSG140"
+set snmp port listen 161
+set snmp port trap 162
+set vrouter "untrust-vr"
+exit
+set vrouter "trust-vr"
+set source-routing enable
+unset add-default-route
+set route 10.0.0.0/16 interface ethernet0/3 gateway 172.18.146.5
+set route 10.1.0.0/16 interface ethernet0/3 gateway 172.18.146.5
+set route 172.0.0.0/8 interface ethernet0/3 gateway 172.18.146.5
+set route 10.2.0.0/16 interface ethernet0/3 gateway 172.18.146.5
+set route 124.219.4.210/32 interface ethernet0/3 gateway 172.18.146.5
+set route 124.219.7.225/32 interface ethernet0/3 gateway 172.18.146.5
+set route 10.3.0.0/16 interface ethernet0/3 gateway 172.18.146.5
+set route 10.6.2.0/24 interface ethernet0/1 gateway 10.6.0.128
+set route 10.6.100.0/24 interface ethernet0/1 gateway 10.6.0.128
+set route 192.168.10.0/24 interface ethernet0/1 gateway 10.6.0.128
+set route 192.168.11.0/24 interface ethernet0/1 gateway 10.6.0.128
+set route 0.0.0.0/0 interface ethernet0/0 gateway 222.92.37.81
+set route 10.6.101.0/24 interface ethernet0/1 gateway 10.6.0.128
+set route 210.200.183.0/24 interface ethernet0/2 gateway 221.224.215.201
+set route 220.130.144.235/24 interface ethernet0/2 gateway 221.224.215.201
+set route 10.6.1.0/24 interface ethernet0/1 gateway 10.6.0.128
+set route 124.219.4.211/32 interface ethernet0/2 gateway 221.224.215.201
+set route 124.219.4.212/32 interface ethernet0/2 gateway 221.224.215.201
+set route 210.59.147.4/32 interface ethernet0/2 gateway 221.224.215.201
+set route 61.219.79.58/32 interface ethernet0/2 gateway 221.224.215.201
+set route 203.66.149.124/32 interface ethernet0/3 gateway 172.18.146.5
+set route 61.218.101.56/32 interface ethernet0/2 gateway 221.224.215.201
+set route 203.66.149.106/32 interface ethernet0/3 gateway 172.18.146.5
+set route 61.218.101.57/32 interface ethernet0/2 gateway 221.224.215.201
+set route 210.71.242.19/32 interface ethernet0/3 gateway 172.18.146.5
+set route 10.6.3.0/24 interface ethernet0/1 gateway 10.6.0.128
+set route 192.168.110.0/24 interface ethernet0/1 gateway 10.6.0.128
+set route 192.168.111.0/24 interface ethernet0/1 gateway 10.6.0.128
+set route 192.168.112.0/24 interface ethernet0/1 gateway 10.6.0.128
+set route 10.6.4.0/24 interface ethernet0/1 gateway 10.6.0.128
+set route 220.248.106.226/29 interface ethernet0/2 gateway 221.224.215.201
+set route 192.168.121.0/24 interface ethernet0/1 gateway 10.6.0.128
+set route 192.168.122.0/24 interface ethernet0/1 gateway 10.6.0.128
+set route 192.168.123.0/24 interface ethernet0/1 gateway 10.6.0.128
+set route 192.168.124.0/24 interface ethernet0/1 gateway 10.6.0.128
+set route 10.1.17.0/24 interface ethernet0/1 gateway 10.6.0.128
+set route 222.130.144.230/32 interface ethernet0/2 gateway 221.224.215.201
+set route 203.66.149.39/32 interface ethernet0/3 gateway 172.18.146.5
+set route 192.168.12.0/24 interface ethernet0/1 gateway 10.6.0.128
+set route 203.66.149.51/0 interface ethernet0/3 gateway 172.18.146.5
+set route 203.66.149.51/32 interface ethernet0/3 gateway 172.18.146.5
+set route 10.6.0.66/32 interface ethernet0/1 gateway 10.6.0.128
+set route 10.5.0.0/16 interface ethernet0/3 gateway 172.18.146.5
+set route 210.71.242.212/32 interface ethernet0/3 gateway 172.18.146.5
+set route 124.219.23.210/32 interface ethernet0/3 gateway 172.18.146.5
+set route 115.239.210.26/32 interface ethernet0/2 gateway 221.224.215.201
+set route 10.6.201.0/24 interface ethernet0/1 gateway 10.6.0.128
+set route 203.66.149.121/32 interface ethernet0/3 gateway 172.18.146.5
+set route 210.71.242.200/32 interface ethernet0/3 gateway 172.18.146.5
+set route 203.66.149.112/0 interface ethernet0/2 gateway 221.224.215.201
+set route 124.219.27.20/32 interface ethernet0/2 gateway 221.224.215.201
+set route 203.66.149.112/32 interface ethernet0/2 gateway 221.224.215.201
+set route 203.145.200.40/32 interface ethernet0/2 gateway 221.224.215.201
+set route 210.71.242.23/32 interface ethernet0/3 gateway 172.18.146.5
+set route 10.6.200.0/24 interface ethernet0/1 gateway 10.6.0.128
+set route 203.145.200.34/32 interface ethernet0/3 gateway 172.18.146.5
+set route 124.219.23.202/32 interface ethernet0/3 gateway 172.18.146.5
+set route 10.6.230.0/24 interface ethernet0/1 gateway 10.6.0.128
+set route 10.6.203.0/24 interface ethernet0/1 gateway 10.6.0.128
+set route 10.6.204.0/24 interface ethernet0/1 gateway 10.6.0.128
+set route 10.4.0.0/16 interface ethernet0/3 gateway 172.18.146.5
+set route 203.66.149.40/32 interface ethernet0/3 gateway 172.18.146.5
+set route 124.219.4.214/32 interface ethernet0/3 gateway 172.18.146.5
+set route 10.6.6.0/24 interface ethernet0/1 gateway 10.6.0.128
+set route source 192.168.12.0/24 interface ethernet0/4 gateway 112.25.133.181
+set route source 192.168.11.0/24 interface ethernet0/4 gateway 112.25.133.181
+set route source 10.6.102.0/24 interface ethernet0/5 gateway 192.168.102.1
+set route source 10.6.6.32/32 interface ethernet0/2 gateway 221.224.215.201
+exit
+set vrouter "untrust-vr"
+exit
+set vrouter "trust-vr"
+exit
